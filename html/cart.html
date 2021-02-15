@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="http://static.tlmworks.org/wgets/dangerous/maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
+    <!-- bootstrap css -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- main css file -->
+    <link rel="stylesheet" href="../css/main.css" />
+    <title>Capstone</title>
+  </head>
+  <body>
+    <div class="container-fluid p-n3" id="top4">
+      <!-- parts receipt modal -->
+      <div id="orderModal" class="modal" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <!-- parts receipt modal header -->
+            <div class="modal-header bg-danger">
+              <h5 class="modal-title text-white">
+                Please print this page for your records.
+              </h5>
+              <button
+                type="button"
+                class="close text-white"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <!-- end parts receipt modal header -->
+            <!-- receipt date -->
+            <div id="date" class="mx-auto p-3">
+              <!-- filled by JavaScript -->
+            </div>
+            <!-- parts receipt modal order info & items -->
+            <div class="modal-body row pt-0">
+              <!-- modal billing address info -->
+              <div id="billTo" class="col-6 pl-4">
+                <!-- populated by JavaScript -->
+              </div>
+              <!-- modal shipping address info -->
+              <div id="shipTo" class="col-6">
+                <!-- populated by JavaScript -->
+              </div>
+              <!-- end modal shipping address info -->
+              <!-- modal order items -->
+              <div class="mt-4 container-fluid">
+                <table class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center">Quanity</th>
+                      <th scope="col">Part Name</th>
+                      <th scope="col" class="text-right">Price</th>
+                    </tr>
+                  </thead>
+                  <tbody class="" id="modalBody">
+                    <!-- to be populated by JavaScript -->
+                    <tr class="table-warning">
+                      <th scope="row" colspan="2" id="modalSubtotal">
+                        Subtotal
+                      </th>
+                      <td class="text-right">
+                        <!-- to be populated by JavaScript -->
+                      </td>
+                    </tr>
+                    <tr class="table-secondary">
+                      <th scope="row" colspan="2" id="modalTax">Tax</th>
+                      <td class="text-right">
+                        <!-- to be populated by JavaScript -->
+                      </td>
+                    </tr>
+                    <tr class="table-info">
+                      <th scope="row" colspan="2" id="modalShipHandling">
+                        Shipping and Handling
+                      </th>
+                      <td class="text-right">
+                        <!-- to be populated by JavaScript -->
+                      </td>
+                    </tr>
+                    <tr class="table-success">
+                      <th scope="row" colspan="2" id="modalTotal">Total</th>
+                      <td class="text-right">
+                        <!-- to be populated by JavaScript -->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- end modal order items -->
+            </div>
+            <!-- end parts receipt modal order info & items -->
+            <!-- modal footer -->
+            <div class="modal-footer bg-primary rounded">
+              <p class="text-white">Indy Mopar Telephone# (123) 456-7890</p>
+            </div>
+            <!-- end modal footer -->
+          </div>
+        </div>
+      </div>
+      <!-- end parts receipt modal -->
+      <!-- logo -->
+      <div class="jumbotron text-center logo">
+        <div class="display-2 indy">Indy Mopar&trade;</div>
+      </div>
+      <!-- end logo -->
+      <!-- nav bar -->
+      <ul class="nav nav-pills nav-justified mb-4">
+        <li class="nav-item">
+          <a class="nav-link" href="../index.html"> Home </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="hemi.html"> Hemi </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="bigBlock.html"> Big Block </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="smallBlock.html"> Small Block </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="cart.html"> Cart </a>
+        </li>
+      </ul>
+      <!-- end nav bar -->
+      <!-- order form -->
+      <form id="partsOrder">
+        <!-- form validation error box -->
+        <div id="billShip"><!-- to be populated by JavaScript --></div>
+        <!-- billing and shipping div -->
+        <div id="billInfo" class="form-row bg-light rounded mb-3">
+          <!-- billing address fields -->
+          <div class="col-sm p-2">
+            <h3 class="text-center p-2">Billing Address</h3>
+            <input
+              type="text"
+              id="billName"
+              class="form-control"
+              placeholder="Name"
+            />
+            <input
+              type="text"
+              id="billAdd"
+              class="form-control"
+              placeholder="Address"
+            />
+            <input
+              type="text"
+              id="billCity"
+              class="form-control"
+              placeholder="City"
+            />
+            <input
+              type="text"
+              id="billState"
+              class="form-control"
+              placeholder="State"
+            />
+            <input
+              type="text"
+              id="billZip"
+              class="form-control"
+              placeholder="Zip Code"
+            />
+          </div>
+          <!-- end billing address -->
+          <!-- shipping address fields -->
+          <div class="col-sm p-2">
+            <h3 class="text-center p-2">Shipping Address</h3>
+            <input
+              type="text"
+              id="shipName"
+              class="form-control"
+              placeholder="Name"
+            />
+            <input
+              type="text"
+              id="shipAdd"
+              class="form-control"
+              placeholder="Address"
+            />
+            <input
+              type="text"
+              id="shipCity"
+              class="form-control"
+              placeholder="City"
+            />
+            <input
+              type="text"
+              id="shipState"
+              class="form-control"
+              placeholder="State"
+            />
+            <input
+              type="text"
+              id="shipZip"
+              class="form-control"
+              placeholder="Zip Code"
+            />
+          </div>
+          <!-- end shipping address -->
+        </div>
+        <!-- end billing and shipping div -->
+        <!-- checkbox -->
+        <div class="m-2 text-center">
+          <label class="mr-2">Shipping address same as billing address? </label
+          ><input id="sameAs" type="checkbox" />
+        </div>
+        <!-- end checkbox -->
+        <!-- parts information table -->
+        <div>
+          <!-- order items table -->
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">Quanity</th>
+                <th scope="col">Part Name</th>
+                <th scope="col" class="text-right">Price</th>
+              </tr>
+            </thead>
+            <!-- items quanity, name, and cost with subtotal, tax, s&h, and total -->
+            <tbody id="formBody">
+              <!-- to be populated by JavaScript with order items -->
+              <tr class="table-warning">
+                <th scope="row" colspan="2" id="subtotal">Subtotal</th>
+                <td class="text-right">
+                  <!-- to be populated by JavaScript -->
+                </td>
+              </tr>
+              <tr class="table-secondary">
+                <th scope="row" colspan="2" id="tax">Tax</th>
+                <td class="text-right">
+                  <!-- to be populated by JavaScript -->
+                </td>
+              </tr>
+              <tr class="table-info">
+                <th scope="row" colspan="2" id="shipHandling">
+                  Shipping and Handling
+                </th>
+                <td class="text-right">
+                  <!-- to be populated by JavaScript -->
+                </td>
+              </tr>
+              <tr class="table-success">
+                <th scope="row" colspan="2" id="total">Total</th>
+                <td class="text-right">
+                  <!-- to be populated by JavaScript -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- end order items table -->
+        </div>
+        <!-- end parts information table -->
+        <!-- form validation error box -->
+        <div id="warning"><!-- to be populated by JavaScript --></div>
+        <!-- credit card info fields -->
+        <div id="creditInfo" class="form-row p-3 rounded">
+          <input
+            id="creditCardNum"
+            type="number"
+            class="form-control mr-3 rounded col-sm"
+            placeholder="Credit Card No."
+          />
+          <input
+            id="cvvNum"
+            type="number"
+            class="form-control mr-3 rounded col-sm"
+            placeholder="CVV No."
+          />
+          <input
+            id="expDate"
+            type="date"
+            class="form-control mr-3 rounded col-sm"
+            placeholder="Exp. Date"
+          />
+          <input
+            id="formSubmit"
+            type="submit"
+            class="btn btn-info btn-sm col-sm"
+          />
+        </div>
+        <!-- end credit card info fields -->
+      </form>
+      <!-- end order form -->
+      <!-- footer navagation -->
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark rounded">
+        <!-- hamburger button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#footerNavbar"
+        >
+          <span class="navbar-toggler-icon"></span></button
+        ><!-- end hamburger button -->
+        <!-- navbar items -->
+        <div class="collapse navbar-collapse" id="footerNavbar">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#top4">Back to Top</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="../index.html"
+                >Return to Home Page</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="contact.html">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+        <!-- end navbar items -->
+      </nav>
+      <!-- end footer navagation -->
+    </div>
+    <!-- end container fluid -->
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <!-- bootstrap -->
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script> 
+    <!-- main javascript file -->
+    <script src="../js/main.js"></script>
+  </body>
+</html>

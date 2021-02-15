@@ -1,0 +1,27 @@
+/* all inputs */
+input {
+  margin-bottom: 5px;
+}
+/* remove bullet points from all li's */
+li {
+  list-style-type: none;
+}
+/* all h2's receive shadow */
+h2 {
+  text-shadow: 3px 2px 1px black;
+}
+/* waving flag background found on all pages */
+.logo {
+  background-image: url(../assets/images/flag3.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* color for text on main logo and contact page */
+.indy {
+  color: rgb(255, 52, 20);
+  text-shadow: 3px 1px 1px whitesmoke;
+}
+/* shadow for text on contact page image */
+.card {
+  text-shadow: 2px 1px 1px whitesmoke;
+}
